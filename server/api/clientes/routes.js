@@ -2,6 +2,8 @@ const express = require('express')
 
 const router=express.Router();
 
+const validator=require('./validator');
+
 const { 
     test,
     getClientes,
@@ -10,6 +12,6 @@ const {
 
 router.get('/test',test);
 router.get('',getClientes);
-router.post('',storeCliente);
+router.post('',validator('addCliente'),storeCliente);
 
 module.exports=router;

@@ -1,6 +1,7 @@
 const { 
     Cliente
 }= require('./repository')
+const {validationResult}= require('express-validator');
 
 const test=async(req,res)=>{
     res.json({message: 'Test controlador clientes'})
@@ -10,6 +11,9 @@ const test=async(req,res)=>{
 
 const getClientes=async(req,res)=>{
    try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
+    else {
     const data = await Cliente.find();
 
     if(!data) return res.status(404).send({error: 'Error getting data'})
@@ -21,6 +25,7 @@ const getClientes=async(req,res)=>{
       message: '',
       data: data,
     });
+}
    } catch (error) {
        console.log(error)
    }
@@ -29,14 +34,31 @@ const getClientes=async(req,res)=>{
 // Guardar clientes
 const storeCliente=async(req,res)=>{
     try {
-        const data= await Cliente.insert(req.body);
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) return res.status(409).send({ errors: errors.array() });
+        else {
 
-        return res.status(200)
-      .send({
-        error: false,
-        message: 'Cliente created successfully',
-        data: data,
-      });
+        const search= await Cliente.findOne({email: req.body.email});
+
+        if(!search){
+            const data= await Cliente.insert(req.body);
+
+            return res.status(200)
+            .send({
+                error: false,
+                message: 'Cliente created successfully',
+                data: data,
+            });
+        }else{
+            return res.status(409)
+            .send({
+                error: true,
+                message: 'Este correo ya existe',
+                data: '',
+            });
+        }
+        
+    }
     } catch (error) {
         console.log(error)
     }
