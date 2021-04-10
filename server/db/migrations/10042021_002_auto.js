@@ -4,7 +4,7 @@ exports.up=(knex)=>{
         table.string('marca').notNullable();
         table.string('modelo').notNullable();
         table.string('placa').notNullable();
-        table.integer('color').notNullable();
+        table.string('color').notNullable();
         table.integer('idCliente').notNullable();
         table.timestamps(true, true);
     })
