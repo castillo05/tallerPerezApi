@@ -107,9 +107,78 @@ const updateCliente=async(req,res)=>{
     }
 }
 
+
+// Listando Clientes por id
+
+const getClientesbyId=async(req,res)=>{
+    try {
+     const errors = validationResult(req);
+     if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
+     else {
+    const id=req.params.id;
+    if(!id){
+        return res.status(409).send({
+            error: false,
+            message: 'Es necesario el identificador del usuario',
+            data: '',
+        })
+    }
+     const data = await Cliente.findById(id);
+ 
+     if(!data) return res.status(404).send({error: 'Error getting data'})
+ 
+     // res OK
+     return res.status(200)
+     .send({
+       error: false,
+       message: '',
+       data: data,
+     });
+ }
+    } catch (error) {
+        console.log(error)
+    }
+ }
+ 
+
+//  Eliminar clientes
+
+const deleteClientesbyId=async(req,res)=>{
+    try {
+     const errors = validationResult(req);
+     if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
+     else {
+    const id=req.params.id;
+    if(!id){
+        return res.status(409).send({
+            error: false,
+            message: 'Es necesario el identificador del usuario',
+            data: '',
+        })
+    }
+     const data = await Cliente.deleteById(id);
+ 
+     if(!data) return res.status(404).send({error: 'Error eliminando el cliente, posiblemente no exista'})
+ 
+     // res OK
+     return res.status(200)
+     .send({
+       error: false,
+       message: 'Cliente eliminado con exito',
+       data: data,
+     });
+ }
+    } catch (error) {
+        console.log(error)
+    }
+ }
+ 
+
 module.exports={
     test,
     getClientes,
     storeCliente,
-    updateCliente
+    updateCliente,
+    getClientesbyId,
+    deleteClientesbyId
 }
