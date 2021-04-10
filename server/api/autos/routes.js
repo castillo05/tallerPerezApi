@@ -10,7 +10,8 @@ const {
     storeAuto,
     updateAuto,
     getAutosbyId,
-    deleteAutosbyId
+    deleteAutosbyId,
+    getAutosbyIdCliente
    
 }= require('./controller');
 
@@ -20,6 +21,7 @@ router.post('',validator('addAuto'),storeAuto);
 router.put('/:id',validator('addAuto'),updateAuto);
 router.get('/:id',getAutosbyId);
 router.delete('/:id',deleteAutosbyId);
+router.get('/cliente/:id',getAutosbyIdCliente);
 
 
 module.exports=router;
