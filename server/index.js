@@ -1,4 +1,5 @@
 const app = require('./app')
+const db= require('./db');
 
 const server=app.listen(3001,async()=>{
     try {

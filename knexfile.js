@@ -6,6 +6,7 @@ const { DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = process.env;
 const BASE_PATH = path.join(__dirname, 'server', 'db');
 
 const options = {
+    client:'mysql',
     connection:{
             host: DB_HOST,
 			user: DB_USER,
