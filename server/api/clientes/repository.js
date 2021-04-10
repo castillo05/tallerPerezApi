@@ -17,5 +17,5 @@ class ClienteRepository extends Base{
 }
 
 module.exports = { 
-    ClienteRepository
+    Cliente: new ClienteRepository
 }
