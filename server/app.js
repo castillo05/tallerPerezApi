@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const api= require('./api');
 
 
 app.use(express.json())
@@ -23,5 +24,6 @@ app.use((req, res, next) => {
     })
   })
 
+  app.use('/api',api);
 
   module.exports =app;
