@@ -7,11 +7,13 @@ const validator=require('./validator');
 const { 
     test,
     getClientes,
-    storeCliente
+    storeCliente,
+    updateCliente
 }= require('./controller');
 
 router.get('/test',test);
 router.get('',getClientes);
 router.post('',validator('addCliente'),storeCliente);
+router.put('/:id',validator('addCliente'),updateCliente);
 
 module.exports=router;

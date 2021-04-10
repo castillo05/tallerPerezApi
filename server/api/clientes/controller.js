@@ -64,8 +64,52 @@ const storeCliente=async(req,res)=>{
     }
 }
 
+// Actualizar clientes
+// Guardar clientes
+const updateCliente=async(req,res)=>{
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) return res.status(409).send({ errors: errors.array() });
+        else {
+
+        const id=req.params.id
+        if(!id){
+            return res.status(409).send({
+                error: false,
+                message: 'Es necesario el identificador del usuario',
+                data: '',
+            })
+        }
+
+        const search= await Cliente.findById(id);
+
+        if(search){
+            const data= await Cliente.update(req.body).where("id",id);
+
+            return res.status(200)
+            .send({
+                error: false,
+                message: 'Cliente updated successfully',
+                data: data,
+            });
+        }else{
+            return res.status(409)
+            .send({
+                error: true,
+                message: 'Este usuario no existe',
+                data: '',
+            });
+        }
+        
+    }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports={
     test,
     getClientes,
-    storeCliente
+    storeCliente,
+    updateCliente
 }
