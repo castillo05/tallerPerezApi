@@ -1,0 +1,255 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Documentation API Taller Perez & Perez",
+      "description": "Documentation API Taller Perez & Perez",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3001",
+    "basePath": "/api",
+   
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json",
+      "application/x-www-form-urlencoded"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+        
+      "/cliente": {
+        
+        "get": {
+            "tags": [
+                "Cliente"
+              ],
+          "description": "Listando clientes del taller",
+         
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Resultados encontrados"
+            }
+          }
+        },
+        "post": {
+            "tags": [
+                "Cliente"
+              ],
+            "description": "Guardando datos del cliente",
+            "parameters": [
+              {
+                "name": "nombre",
+                "in": "path",
+                "description": "Nombre del cliente",
+                "schema": {
+                  "$ref": "#/definitions/StoreCliente"
+                }
+              },
+              {
+                  "name": "apellido",
+                  "in": "path",
+                  "description": "Apellido del cliente",
+                  "schema": {
+                    "$ref": "#/definitions/StoreCliente"
+                  }
+                },
+                {
+                  "name": "email",
+                  "in": "path",
+                  "description": "Email del cliente",
+                  "schema": {
+                    "$ref": "#/definitions/StoreCliente"
+                  }
+                },
+                {
+                  "name": "telefono",
+                  "in": "path",
+                  "description": "Telefono del cliente",
+                  "schema": {
+                    "$ref": "#/definitions/StoreCliente"
+                  }
+                },
+                {
+                  "name": "direccion",
+                  "in": "path",
+                  "description": "Direccion del cliente",
+                  "schema": {
+                    "$ref": "#/definitions/StoreCliente"
+                  }
+                }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "Cliente Guardado",
+                "schema": {
+                  "$ref": "#/definitions/StoreCliente"
+                }
+              }
+            }
+          },
+          "put": {
+            "tags": [
+                "Cliente"
+              ],
+            "description": "Actualizando datos del cliente",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "description": "Id del cliente",
+                    "schema": {
+                      "$ref": "#/definitions/StoreCliente"
+                    }
+                  },
+              {
+                "name": "body",
+                "in": "body",
+                "description": "Nombre del cliente",
+                "schema": {
+                  "$ref": "#/definitions/StoreCliente"
+                }
+              }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "Cliente Guardado",
+                "schema": {
+                  "$ref": "#/definitions/StoreCliente"
+                }
+              }
+            }
+          },
+          "delete": {
+            "tags": [
+                "Cliente"
+              ],
+            "description": "Actualizando datos del cliente",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "query",
+                    "description": "Id del cliente",
+                    "schema": {
+                      "$ref": "#/definitions/StoreCliente"
+                    }
+                  }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "Cliente Eliminado"
+               
+              },
+              "400": {
+                "description": "Cliente no encontrado"
+              }
+            }
+          }
+         
+        },
+        "/cliente/details":{
+            "get": {
+                "tags": [
+                    "Cliente"
+                  ],
+                "description": "Listar cliente por id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Id del cliente",
+                        "schema": {
+                          "$ref": "#/definitions/StoreCliente"
+                        }
+                      }
+                ],
+                "produces": [
+                  "application/json"
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Cliente Encontrado"
+                   
+                  },
+                  "400": {
+                    "description": "Cliente no encontrado"
+                  }
+                }
+              }
+        }
+       
+      },
+     
+    "definitions": {
+      "StoreCliente": {
+        "required": [
+          "nombre",
+          "apellido",
+          "email",
+          "telefono",
+          "direccion"
+        ],
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "apellido": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "email": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "telefono": {
+            "type": "integer",
+            "uniqueItems": true
+          },
+          "direccion": {
+            "type": "string",
+            "uniqueItems": true
+          }
+        }
+      },
+      "Distancia": {
+        "required": [
+          "longitud",
+          "latitud",
+          "distancia"
+        ],
+        "properties": {
+          "longitud": {
+            "type": "integer",
+            "uniqueItems": true
+          },
+          "latitud": {
+            "type": "integer",
+            "uniqueItems": true
+          },
+          "distancia": {
+            "type": "integer",
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }

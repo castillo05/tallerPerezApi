@@ -16,9 +16,9 @@ const {
 router.get('/test',test);
 router.get('',getClientes);
 router.post('',validator('addCliente'),storeCliente);
-router.put('/:id',validator('addCliente'),updateCliente);
-router.get('/:id',getClientesbyId);
-router.delete('/:id',deleteClientesbyId);
+router.put('',validator('addCliente'),updateCliente);
+router.get('/details',getClientesbyId);
+router.delete('',deleteClientesbyId);
 
 
 module.exports=router;

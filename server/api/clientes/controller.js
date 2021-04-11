@@ -72,7 +72,7 @@ const updateCliente=async(req,res)=>{
         if (!errors.isEmpty()) return res.status(409).send({ errors: errors.array() });
         else {
 
-        const id=req.params.id
+        const id=req.query.id
         if(!id){
             return res.status(409).send({
                 error: false,
@@ -115,7 +115,7 @@ const getClientesbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const id=req.params.id;
+    const id=req.query.id;
     if(!id){
         return res.status(409).send({
             error: false,
@@ -125,7 +125,7 @@ const getClientesbyId=async(req,res)=>{
     }
      const data = await Cliente.findById(id);
  
-     if(!data) return res.status(404).send({error: 'Error getting data'})
+     if(!data) return res.status(404).send({error: 'Cliente no encontrado'})
  
      // res OK
      return res.status(200)
@@ -148,7 +148,7 @@ const deleteClientesbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const id=req.params.id;
+    const id=req.query.id;
     if(!id){
         return res.status(409).send({
             error: false,

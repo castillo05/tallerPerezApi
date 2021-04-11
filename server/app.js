@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const api= require('./api');
-
+const swaggerDocumentCliente = require('../swagger-doc.json');
+const swaggerUi = require('swagger-ui-express')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -23,7 +24,7 @@ app.use((req, res, next) => {
         service: `Perez & Perez service is still running`,
     })
   })
-
+  app.use('/api/docs-cliente',swaggerUi.serve,swaggerUi.setup(swaggerDocumentCliente));
   app.use('/api',api);
 
   module.exports =app;
