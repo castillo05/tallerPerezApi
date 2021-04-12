@@ -3,9 +3,9 @@ const db= require('./db');
 require('dotenv').config()
 const PORT= process.env.PORT || 3001;
 
-const server=app.listen(3001,async()=>{
+const server=app.listen(PORT,async()=>{
     try {
-        console.log(`Api running on port 3001`);
+        console.log(`Api running on port ${PORT}`);
         // Migraciones
         const migration = await db.migrate.latest();
         // const seed = await db.seed.run();
