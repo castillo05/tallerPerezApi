@@ -4,6 +4,10 @@ const api= require('./api');
 const swaggerDocumentCliente = require('./docs/swagger-doc.json');
 const swaggerUi = require('swagger-ui-express')
 
+// Super test
+const supertest = require('supertest')
+const request = supertest(app)
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -23,6 +27,10 @@ app.use((req, res, next) => {
         database: "Welcome to Reparaciones Api",
         service: `Perez & Perez service is still running`,
     })
+  })
+  // Ruta test
+  app.get('/test', async(req, res)=>{
+    res.json({message: 'pass!'})
   })
   app.use('/api/docs-cliente',swaggerUi.serve,swaggerUi.setup(swaggerDocumentCliente));
   app.use('/api',api);
