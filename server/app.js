@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const api= require('./api');
-const swaggerDocumentCliente = require('../swagger-doc.json');
+const swaggerDocumentCliente = require('./docs/swagger-doc.json');
 const swaggerUi = require('swagger-ui-express')
 
 app.use(express.json())

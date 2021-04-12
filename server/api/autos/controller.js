@@ -72,7 +72,7 @@ const updateAuto=async(req,res)=>{
         if (!errors.isEmpty()) return res.status(409).send({ errors: errors.array() });
         else {
 
-        const idAuto=req.params.id
+        const idAuto=req.query.id
         if(!idAuto){
             return res.status(409).send({
                 error: false,
@@ -115,7 +115,7 @@ const getAutosbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idAuto=req.params.id;
+    const idAuto=req.query.id;
     if(!idAuto){
         return res.status(409).send({
             error: false,
@@ -148,7 +148,7 @@ const getAutosbyIdCliente=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idCliente=req.params.id;
+    const idCliente=req.query.id;
     if(!idCliente){
         return res.status(409).send({
             error: false,
@@ -181,7 +181,7 @@ const deleteAutosbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idAuto=req.params.id;
+    const idAuto=req.query.id;
     if(!idAuto){
         return res.status(409).send({
             error: false,

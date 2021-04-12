@@ -13,7 +13,8 @@
     "basePath": "/api",
    
     "schemes": [
-      "http"
+      "http",
+      "https"
     ],
     "consumes": [
       "application/json",
@@ -226,27 +227,6 @@
           },
           "direccion": {
             "type": "string",
-            "uniqueItems": true
-          }
-        }
-      },
-      "Distancia": {
-        "required": [
-          "longitud",
-          "latitud",
-          "distancia"
-        ],
-        "properties": {
-          "longitud": {
-            "type": "integer",
-            "uniqueItems": true
-          },
-          "latitud": {
-            "type": "integer",
-            "uniqueItems": true
-          },
-          "distancia": {
-            "type": "integer",
             "uniqueItems": true
           }
         }
