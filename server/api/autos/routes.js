@@ -18,10 +18,10 @@ const {
 router.get('/test',test);
 router.get('',getAuto);
 router.post('',validator('addAuto'),storeAuto);
-router.put('/:id',validator('addAuto'),updateAuto);
-router.get('/:id',getAutosbyId);
-router.delete('/:id',deleteAutosbyId);
-router.get('/cliente/:id',getAutosbyIdCliente);
+router.put('',validator('addAuto'),updateAuto);
+router.get('/detail',getAutosbyId);
+router.delete('',deleteAutosbyId);
+router.get('/cliente',getAutosbyIdCliente);
 
 
 module.exports=router;

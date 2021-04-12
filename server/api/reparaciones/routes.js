@@ -16,11 +16,11 @@ const {
 }= require('./controller');
 
 router.get('/test',test);
-router.get('/',getReparacion);
-router.post('/',validator('addReparacion'),storeReparacion);
-router.put('/:id',validator('addReparacion'),updateReparacion);
-router.get('/:id',getReparacionbyId);
-router.delete('/:id',deleteReparacionbyId);
-router.get('/auto/:id',getReparacionbyIdAuto);
+router.get('',getReparacion);
+router.post('',validator('addReparacion'),storeReparacion);
+router.put('',validator('addReparacion'),updateReparacion);
+router.get('/detail',getReparacionbyId);
+router.delete('',deleteReparacionbyId);
+router.get('/auto',getReparacionbyIdAuto);
 
 module.exports=router;

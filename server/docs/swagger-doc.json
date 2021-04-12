@@ -49,45 +49,13 @@
             "description": "Guardando datos del cliente",
             "parameters": [
               {
-                "name": "nombre",
-                "in": "path",
-                "description": "Nombre del cliente",
+                "name": "body",
+                "in": "body",
+                "description": "Datos del cliente",
                 "schema": {
                   "$ref": "#/definitions/StoreCliente"
                 }
-              },
-              {
-                  "name": "apellido",
-                  "in": "path",
-                  "description": "Apellido del cliente",
-                  "schema": {
-                    "$ref": "#/definitions/StoreCliente"
-                  }
-                },
-                {
-                  "name": "email",
-                  "in": "path",
-                  "description": "Email del cliente",
-                  "schema": {
-                    "$ref": "#/definitions/StoreCliente"
-                  }
-                },
-                {
-                  "name": "telefono",
-                  "in": "path",
-                  "description": "Telefono del cliente",
-                  "schema": {
-                    "$ref": "#/definitions/StoreCliente"
-                  }
-                },
-                {
-                  "name": "direccion",
-                  "in": "path",
-                  "description": "Direccion del cliente",
-                  "schema": {
-                    "$ref": "#/definitions/StoreCliente"
-                  }
-                }
+              }
             ],
             "produces": [
               "application/json"
@@ -166,7 +134,7 @@
           }
          
         },
-        "/cliente/details":{
+        "/cliente/detail":{
             "get": {
                 "tags": [
                     "Cliente"
@@ -195,7 +163,84 @@
                   }
                 }
               }
-        }
+        },
+        "/auto": {
+        
+          "get": {
+              "tags": [
+                  "Auto"
+                ],
+            "description": "Listando autos del cliente",
+           
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "Resultados encontrados"
+              }
+            }
+          },
+          "post": {
+              "tags": [
+                  "Auto"
+                ],
+              "description": "Guardando auto del cliente",
+              "parameters": [
+                {
+                  "name": "body",
+                  "in": "body",
+                  "description": "Detalles del auto",
+                  "schema": {
+                    "$ref": "#/definitions/StoreAuto"
+                  }
+                }
+                
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "Cliente Guardado",
+                  "schema": {
+                    "$ref": "#/definitions/StoreAuto"
+                  }
+                }
+              }
+            }
+           
+          },
+          "/reparacion/auto": {
+        
+            "get": {
+                "tags": [
+                    "Reparaciones"
+                  ],
+              "description": "Listando de reparaciones por auto",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "query",
+                  "description": "Codigo del auto",
+                  "schema": {
+                    "$ref": "#/definitions/StoreAuto"
+                  }
+                }
+                
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "Resultados encontrados"
+                 
+                }
+              }
+            }
+             
+            }
        
       },
      
@@ -227,6 +272,37 @@
           },
           "direccion": {
             "type": "string",
+            "uniqueItems": true
+          }
+        }
+      },
+      "StoreAuto": {
+        "required": [
+          "marca",
+          "modelo",
+          "placa",
+          "color",
+          "idCliente"
+        ],
+        "properties": {
+          "marca": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "modelo": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "placa": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "color": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "idCliente": {
+            "type": "integer",
             "uniqueItems": true
           }
         }

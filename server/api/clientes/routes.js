@@ -17,7 +17,7 @@ router.get('/test',test);
 router.get('',getClientes);
 router.post('',validator('addCliente'),storeCliente);
 router.put('',validator('addCliente'),updateCliente);
-router.get('/details',getClientesbyId);
+router.get('/detail',getClientesbyId);
 router.delete('',deleteClientesbyId);
 
 

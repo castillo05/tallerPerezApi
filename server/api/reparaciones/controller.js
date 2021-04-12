@@ -63,7 +63,7 @@ const updateReparacion=async(req,res)=>{
         if (!errors.isEmpty()) return res.status(409).send({ errors: errors.array() });
         else {
 
-        const idReparacion=req.params.id
+        const idReparacion=req.query.id
         if(!idReparacion){
             return res.status(409).send({
                 error: false,
@@ -106,7 +106,7 @@ const getReparacionbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idReparacion=req.params.id;
+    const idReparacion=req.query.id;
     if(!idReparacion){
         return res.status(409).send({
             error: false,
@@ -139,7 +139,8 @@ const getReparacionbyIdAuto=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idAuto=req.params.id;
+    const idAuto=req.query.id;
+    
     if(!idAuto){
         return res.status(409).send({
             error: false,
@@ -178,7 +179,7 @@ const deleteReparacionbyId=async(req,res)=>{
      const errors = validationResult(req);
      if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
      else {
-    const idReparacion=req.params.id;
+    const idReparacion=req.query.id;
     if(!idReparacion){
         return res.status(409).send({
             error: false,
