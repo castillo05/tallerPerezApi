@@ -26,3 +26,5 @@ npm run test:watch
 - La base de datos esta desarrollada en mysql y esta alojada en heroku.
 - La api esta alojada en heroku en el siguiente enlace:
 https://node-interview2.herokuapp.com/api
+
+## Desarrollada por Jorge Castillo https://jorgecastillo.pro
