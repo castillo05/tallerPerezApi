@@ -14,7 +14,7 @@ const getClientes=async(req,res)=>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(409).send({ errors: errors.formatWith(formatError).mapped() });
     else {
-    const data = await Cliente.find();
+    const data = await Cliente.find().withGraphFetched("[auto]");
 
     if(!data) return res.status(404).send({error: 'Error getting data'})
 
@@ -123,7 +123,7 @@ const getClientesbyId=async(req,res)=>{
             data: '',
         })
     }
-     const data = await Cliente.findById(id);
+     const data = await Cliente.findById(id).withGraphFetched("[auto]");
  
      if(!data) return res.status(404).send({error: 'Cliente no encontrado'})
  

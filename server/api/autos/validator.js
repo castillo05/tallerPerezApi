@@ -37,7 +37,7 @@ const storeValidator =[
 ]
 module.exports = (option) => {
     switch (option) {
-      case 'addCliente':{
+      case 'addAuto':{
         return storeValidator;
       }
      
